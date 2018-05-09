@@ -2,7 +2,7 @@
 
 // COMMENT: How is this data utilized within our blog app? What is the structure of this data (your response should include the terms "object", "array", and "key/value pairs")?
 // PUT YOUR RESPONSE HERE
-// The data is passed through the Article coinstructor function and turned into a rawDataObj where the key/value pairs are used as parameters and are then pushed into the array 
+// The data is passed through the Article constructor function and turned into a rawDataObj where the key/value pairs are used as parameters and are then pushed into the array 
 
 let rawData = [
   {
