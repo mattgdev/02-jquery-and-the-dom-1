@@ -23,16 +23,17 @@ Article.prototype.toHtml = function() {
   // COMMENT: What is the benefit of cloning the article? (see the jQuery docs)
   // Cloning the article lets us keep the information in a seperate JS page instead of cluttering up our main article.js with the entirety of each article
 
-  let $newArticle = $('article.template').clone();
+  let $newArticle = $('article.template').clone().removeClass('template');
   /* DONE: This cloned article still has a class of template. In our modules.css stylesheet, we should give all elements with a class of template a display of none so that our template does not display in the browser. But, we also need to make sure we're not accidentally hiding our cloned article. */
 
   if (!this.publishedOn) $newArticle.addClass('draft');
-  $newArticle.attr('data-category', this.category);
-  $newArticle.attr('author', this.author);
-  $newArticle.attr('author-url', this.authorUrl);
-  $newArticle.attr('title', this.title);
-  $newArticle.attr('body', this.body);
-  $newArticle.attr('published-on', this.publishedOn);
+  $newArticle.append(this.title);
+  $newArticle.append(this.category);
+  $newArticle.append(this.author);
+  $newArticle.append(this.authorUrl);
+  $newArticle.append(this.body);
+  $newArticle.append(this.publishedOn);
+  console.log($newArticle)
   /* DONE: Now use jQuery traversal and setter methods to fill in the rest of the current template clone with values of the properties of this particular Article instance.
     We need to fill in:
       1. author name,
@@ -54,11 +55,23 @@ rawData.sort(function(a,b) {
 
 // TODO: Refactor these for loops using the .forEach() array method.
 
+
+// rawData.forEach(function(elements){
+//   articles.push(new Article(rawData[i]));
+// })
+
+
 for(let i = 0; i < rawData.length; i++) {
   articles.push(new Article(rawData[i]));
+  console.log('xxxxx')
 }
 
-console.log(articles);
+
+// articles.forEach(function(elements){
+//   $('#articles').append(articles[i].toHtml());
+// })
+
+
 
 for(let i = 0; i < articles.length; i++) {
   $('#articles').append(articles[i].toHtml());
