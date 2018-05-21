@@ -18,7 +18,7 @@ function Article (rawDataObj) {
   this.authorUrl = rawDataObj.authorUrl;
   this.publishedOn = rawDataObj.publishedOn;
   this.body = rawDataObj.body;
-} 
+}
 Article.prototype.toHtml = function() {
   // COMMENT: What is the benefit of cloning the article? (see the jQuery docs)
   // Cloning the article lets us keep the information in a seperate JS page instead of cluttering up our main article.js with the entirety of each article
@@ -56,23 +56,13 @@ rawData.sort(function(a,b) {
 // TODO: Refactor these for loops using the .forEach() array method.
 
 
-// rawData.forEach(function(elements){
-//   articles.push(new Article(rawData[i]));
-// })
+
+rawData.forEach(function(rawDataObj){
+  articles.push(new Article(rawDataObj))
+})
 
 
-for(let i = 0; i < rawData.length; i++) {
-  articles.push(new Article(rawData[i]));
-  console.log('xxxxx')
-}
-
-
-// articles.forEach(function(elements){
-//   $('#articles').append(articles[i].toHtml());
-// })
-
-
-
-for(let i = 0; i < articles.length; i++) {
-  $('#articles').append(articles[i].toHtml());
-}
+articles.forEach(function(article){
+  console.log(article);
+  $('#articles').append(article.toHtml());
+});
